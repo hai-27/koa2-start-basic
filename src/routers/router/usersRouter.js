@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:58:10
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-14 21:30:24
+ * @LastEditTime: 2020-03-15 00:05:00
  */
 const Router = require('koa-router');
 // 导入控制层
@@ -13,5 +13,6 @@ let usersRouter = new Router();
 
 usersRouter
   .post('/users/login', usersController.Login)
+  .post('/users/findUserName', usersController.FindUserName)
 
 module.exports = usersRouter;

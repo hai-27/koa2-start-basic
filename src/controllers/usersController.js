@@ -3,10 +3,10 @@
  * @Author: hai-27
  * @Date: 2020-03-14 21:16:08
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-14 23:50:32
+ * @LastEditTime: 2020-03-15 00:07:35
  */
 const userDao = require('../models/dao/usersDao');
-const { checkUserInfo } = require('../middleware/checkUserInfo');
+const { checkUserInfo, checkUserName } = require('../middleware/checkUserInfo');
 
 module.exports = {
   /**
@@ -53,6 +53,47 @@ module.exports = {
     }
 
     //数据库设置用户名唯一
+    //若存在user.length != 1 || user.length!=0
+    //返回未知错误
+    //正常不会出现
+    ctx.body = {
+      code: '500',
+      msg: '未知错误'
+    }
+  },
+  /**
+   * 查询是否存在某个用户名,用于注册时前端校验
+   * @param {Object} ctx
+   */
+  FindUserName: async ctx => {
+    let { userName } = ctx.request.body;
+
+    // 校验用户名是否符合规则
+    if (!checkUserName(ctx, userName)) {
+      return;
+    }
+    // 连接数据库根据用户名查询用户信息
+    let user = await userDao.FindUserName(userName);
+    // 结果集长度为0则代表不存在该用户,可以注册
+    if (user.length === 0) {
+      ctx.body = {
+        code: '001',
+        msg: '用户名不存在，可以注册'
+      }
+      return;
+    }
+
+    //数据库设置用户名唯一
+    //结果集长度为1则代表存在该用户,不可以注册
+    if (user.length === 1) {
+      ctx.body = {
+        code: '004',
+        msg: '用户名已经存在，不能注册'
+      }
+      return;
+    }
+
+    //数据库设置用户名唯一，
     //若存在user.length != 1 || user.length!=0
     //返回未知错误
     //正常不会出现
