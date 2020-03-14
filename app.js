@@ -2,11 +2,12 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-14 23:01:44
+ * @LastEditTime: 2020-03-14 23:39:56
  */
 const Koa = require('koa');
 const KoaStatic = require('koa-static');
 const KoaBody = require('koa-body');
+const Session = require('koa-session');
 
 let { Port, staticDir, uploadDir } = require('./config');
 
@@ -34,6 +35,11 @@ app.use(async (ctx, next) => {
 });
 // 使用koa-static处理静态资源
 app.use(KoaStatic(staticDir));
+
+// session
+const CONFIG = require('./src/middleware/session');
+app.keys = ['session app keys'];
+app.use(Session(CONFIG, app));
 
 // 处理请求体数据
 app.use(KoaBody({
