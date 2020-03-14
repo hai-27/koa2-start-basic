@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hai-27/koa2-start-basic/issues"
   },
-  "homepage": "https://github.com/hai-27/koa2-start-basic#readme"
+  "homepage": "https://github.com/hai-27/koa2-start-basic#readme",
+  "dependencies": {
+    "koa": "^2.11.0"
+  }
 }
