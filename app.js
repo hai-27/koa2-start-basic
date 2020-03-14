@@ -1,8 +1,9 @@
 /*
+ * @Description: 入口文件
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 00:02:03
+ * @LastEditTime: 2020-03-15 00:23:28
  */
 const Koa = require('koa');
 const KoaStatic = require('koa-static');
