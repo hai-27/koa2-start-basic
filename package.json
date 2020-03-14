@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hai-27/koa2-start-basic#readme",
   "dependencies": {
-    "koa": "^2.11.0"
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.8"
   }
 }
