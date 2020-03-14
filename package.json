@@ -18,6 +18,7 @@
   "homepage": "https://github.com/hai-27/koa2-start-basic#readme",
   "dependencies": {
     "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
     "koa-router": "^8.0.8",
     "koa-static": "^5.0.0",
     "mysql": "^2.18.1"
