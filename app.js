@@ -2,7 +2,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-14 23:43:20
+ * @LastEditTime: 2020-03-15 00:02:03
  */
 const Koa = require('koa');
 const KoaStatic = require('koa-static');
@@ -13,7 +13,7 @@ let { Port, staticDir, uploadDir } = require('./config');
 
 let app = new Koa();
 
-// 统一处理异常
+// 异常处理中间件
 app.use(async (ctx, next) => {
   try {
     await next();
