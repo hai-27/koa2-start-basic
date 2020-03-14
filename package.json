@@ -1,0 +1,19 @@
+{
+  "name": "koa2-start-basic",
+  "version": "1.0.0",
+  "description": "Koa2快速启动基础框架",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hai-27/koa2-start-basic.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hai-27/koa2-start-basic/issues"
+  },
+  "homepage": "https://github.com/hai-27/koa2-start-basic#readme"
+}
