@@ -3,10 +3,10 @@
  * @Author: hai-27
  * @Date: 2020-03-14 22:21:48
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 00:22:07
+ * @LastEditTime: 2020-03-15 02:12:41
  */
 var mysql = require('mysql');
-const { dbConfig } = require('../../config.js');
+const { dbConfig } = require('../config.js');
 var pool = mysql.createPool(dbConfig);
 
 var db = {};

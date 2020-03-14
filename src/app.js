@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 00:23:28
+ * @LastEditTime: 2020-03-15 02:09:15
  */
 const Koa = require('koa');
 const KoaStatic = require('koa-static');
@@ -38,12 +38,12 @@ app.use(async (ctx, next) => {
 app.use(KoaStatic(staticDir));
 
 // session
-const CONFIG = require('./src/middleware/session');
+const CONFIG = require('./middleware/session');
 app.keys = ['session app keys'];
 app.use(Session(CONFIG, app));
 
 // 判断是否登录
-const isLogin = require('./src/middleware/isLogin');
+const isLogin = require('./middleware/isLogin');
 app.use(isLogin);
 
 // 处理请求体数据
@@ -63,7 +63,7 @@ app.use(KoaBody({
 }));
 
 // 使用路由中间件
-const Routers = require('./src/routers');
+const Routers = require('./routers');
 app.use(Routers.routes()).use(Routers.allowedMethods());
 
 // 监听服务器启动端口
