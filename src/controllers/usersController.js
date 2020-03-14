@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 21:16:08
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 00:07:35
+ * @LastEditTime: 2020-03-15 00:15:27
  */
 const userDao = require('../models/dao/usersDao');
 const { checkUserInfo, checkUserName } = require('../middleware/checkUserInfo');
@@ -100,6 +100,45 @@ module.exports = {
     ctx.body = {
       code: '500',
       msg: '未知错误'
+    }
+  },
+  Register: async ctx => {
+    let { userName, password } = ctx.request.body;
+
+    // 校验用户信息是否符合规则
+    if (!checkUserInfo(ctx, userName, password)) {
+      return;
+    }
+    // 连接数据库根据用户名查询用户信息
+    // 先判断该用户是否存在
+    let user = await userDao.FindUserName(userName);
+
+    if (user.length !== 0) {
+      ctx.body = {
+        code: '004',
+        msg: '用户名已经存在，不能注册'
+      }
+      return;
+    }
+
+    try {
+      // 连接数据库插入用户信息
+      let registerResult = await userDao.Register(userName, password);
+      // 操作所影响的记录行数为1,则代表注册成功
+      if (registerResult.affectedRows === 1) {
+        ctx.body = {
+          code: '001',
+          msg: '注册成功'
+        }
+        return;
+      }
+      // 否则失败
+      ctx.body = {
+        code: '500',
+        msg: '未知错误，注册失败'
+      }
+    } catch (error) {
+      reject(error);
     }
   }
 };

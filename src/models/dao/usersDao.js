@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 23:26:24
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 00:04:44
+ * @LastEditTime: 2020-03-15 00:15:49
  */
 const db = require('../db.js');
 
@@ -17,5 +17,10 @@ module.exports = {
   FindUserName: async (userName) => {
     const sql = 'select * from users where userName = ?';
     return await db.query(sql, [userName]);
+  },
+  // 连接数据库插入用户信息
+  Register: async (userName, password) => {
+    const sql = 'insert into users values(null,?,?,null)';
+    return await db.query(sql, [userName, password]);
   }
 }
