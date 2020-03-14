@@ -2,11 +2,12 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-14 22:44:48
+ * @LastEditTime: 2020-03-14 22:52:18
  */
 const Koa = require('koa');
+const KoaStatic = require('koa-static');
 
-let { Port } = require('./config');
+let { Port, staticDir } = require('./config');
 
 let app = new Koa();
 
@@ -22,6 +23,16 @@ app.use(async (ctx, next) => {
     }
   }
 });
+
+// 为静态资源请求重写url
+app.use(async (ctx, next) => {
+  if (ctx.url.startsWith('/public')) {
+    ctx.url = ctx.url.replace('/public', '');
+  }
+  await next();
+});
+// 使用koa-static处理静态资源
+app.use(KoaStatic(staticDir));
 
 // 使用路由中间件
 const Routers = require('./src/routers');
