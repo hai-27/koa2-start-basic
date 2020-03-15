@@ -43,7 +43,7 @@ app.listen(Port, () => {
 
 使用postman测试一下
 
-![](https://github.com/hai-27/koa2-start-basic/blob/master/public/screenshots/static-test.png)
+![](https://github.com/hai-27/koa2-start-basic/blob/master/public/screenshots/start-test.png)
 
 
 
