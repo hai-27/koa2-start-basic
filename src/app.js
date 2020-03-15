@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 02:09:15
+ * @LastEditTime: 2020-03-15 13:33:13
  */
 const Koa = require('koa');
 const KoaStatic = require('koa-static');
@@ -45,6 +45,11 @@ app.use(Session(CONFIG, app));
 // 判断是否登录
 const isLogin = require('./middleware/isLogin');
 app.use(isLogin);
+
+app.use(async (ctx, next) => {
+  ctx.state.user = ctx.session.user;
+  await next();
+});
 
 // 处理请求体数据
 app.use(KoaBody({
