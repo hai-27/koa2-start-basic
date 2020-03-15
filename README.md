@@ -7,6 +7,24 @@
 
 [接口文档](https://github.com/hai-27/koa2-start-basic/blob/master/docs/API.md)
 
+## 运行项目
+
+```
+1. Clone project
+
+git clone https://github.com/hai-27/koa2-start-basic.git
+
+2. Project setup
+
+cd koa2-start-basic
+npm install
+
+3. Run project
+
+cd src
+node app.js
+```
+
 ## 快速创建一个服务器
 
 ### 安装koa
