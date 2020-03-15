@@ -457,6 +457,8 @@ app.use(isLogin);
 
 ## 用户模块接口实现
 
+[接口文档](https://github.com/hai-27/koa2-start-basic/blob/master/docs/API.md)
+
 ### 数据库设计
 
 ```mysql
