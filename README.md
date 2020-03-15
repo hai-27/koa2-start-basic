@@ -60,11 +60,11 @@ app.listen(Port, () => {
 
 ```javascript
 └── src # 源代码目录
-		└── routers # 路由目录
-				└── router # 子路由目录
-						├── usersRouter.js # 用户模块子路由
-						├── ... # 更多的模块子路由
-				├── index.js # 路由入口文件
+	└── routers # 路由目录
+	    └── router # 子路由目录
+	        ├── usersRouter.js # 用户模块子路由
+	        ├── ... # 更多的模块子路由
+	├── index.js # 路由入口文件
 ```
 
 ### 安装koa-router
@@ -437,20 +437,20 @@ app.use(isLogin);
 
 ```javascript
 └── src # 源代码目录
-		└── routers # 路由目录
-				└── router # 子路由目录
-						├── usersRouter.js # 用户模块子路由
-						├── ... # 更多的模块子路由
-				├── index.js # 路由入口文件
-		└── controllers # 控制层目录
-				├── usersController.js # 用户模块控制层
-				├── ... # 更多的模块控制层
-		└── models # 数据持久层目录
-				└── dao # 模块数据持久层目录
-						├── usersDao.js # 用户模块数据持久层
-						├── ... # 更多的模块数据持久层
-				├── db.js # 数据库连接函数
-		├── app.js # 入口文件
+    └── routers # 路由目录
+	└── router # 子路由目录
+	    ├── usersRouter.js # 用户模块子路由
+	    ├── ... # 更多的模块子路由
+	├── index.js # 路由入口文件
+	└── controllers # 控制层目录
+	    ├── usersController.js # 用户模块控制层
+	    ├── ... # 更多的模块控制层
+	└── models # 数据持久层目录
+	    └── dao # 模块数据持久层目录
+	        ├── usersDao.js # 用户模块数据持久层
+	        ├── ... # 更多的模块数据持久层
+	    ├── db.js # 数据库连接函数
+    ├── app.js # 入口文件
 ```
 
 
