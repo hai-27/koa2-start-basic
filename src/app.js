@@ -3,7 +3,7 @@
  * @Author: hai-27
  * @Date: 2020-03-14 20:14:45
  * @LastEditors: hai-27
- * @LastEditTime: 2020-03-15 13:33:13
+ * @LastEditTime: 2020-04-07 23:32:28
  */
 const Koa = require('koa');
 const KoaStatic = require('koa-static');
@@ -15,17 +15,8 @@ let { Port, staticDir, uploadDir } = require('./config');
 let app = new Koa();
 
 // 异常处理中间件
-app.use(async (ctx, next) => {
-  try {
-    await next();
-  } catch (error) {
-    console.log(error);
-    ctx.body = {
-      code: '500',
-      msg: '服务器未知错误'
-    }
-  }
-});
+const error = require('./middleware/error');
+app.use(error);
 
 // 为静态资源请求重写url
 app.use(async (ctx, next) => {
